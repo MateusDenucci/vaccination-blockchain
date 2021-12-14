@@ -39,6 +39,14 @@ class VaccinationBlockchain:
         )
 
         self.chain.append(vaccination_block)
+    
+    @property
+    def blockchhain_integrity(self):
+        for index in range((len(self.chain) - 1), 1, -1):
+            if self.chain[index].previous_block_hash != self.chain[index - 1].block_hash:
+                return False
+        
+        return True
 
         
 info1 = {
@@ -53,9 +61,18 @@ info2 = {
     'is_vaccinated': False
 }
 
+info3 = {
+    'name': 'Random Person',
+    'cpf': '46943393030',
+    'is_vaccinated': False
+}
+
 blockchain = VaccinationBlockchain()
 
 blockchain.add_block([info1, info2])
+blockchain.add_block([info3])
 
 for vaccination_block in blockchain.chain:
     print(vaccination_block.record_list)
+
+print(blockchain.blockchhain_integrity)
