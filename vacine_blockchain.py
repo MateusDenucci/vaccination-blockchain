@@ -48,31 +48,38 @@ class VaccinationBlockchain:
         
         return True
 
-        
-info1 = {
-    'name': 'Mateus Denucci',
-    'cpf': '46943393030',
-    'is_vaccinated': True
-}
 
-info2 = {
-    'name': 'Random Person',
-    'cpf': '46943393030',
-    'is_vaccinated': False
-}
+def insert_test_data(blockchain):
+    info1 = {
+        'name': 'Mateus Denucci',
+        'cpf': '46943393030',
+        'is_vaccinated': True
+    }
 
-info3 = {
-    'name': 'Random Person',
-    'cpf': '46943393030',
-    'is_vaccinated': False
-}
+    info2 = {
+        'name': 'Random Person',
+        'cpf': '46943393030',
+        'is_vaccinated': False
+    }
 
-blockchain = VaccinationBlockchain()
+    info3 = {
+        'name': 'Random Person 2',
+        'cpf': '46943396030',
+        'is_vaccinated': False
+    }
 
-blockchain.add_block([info1, info2])
-blockchain.add_block([info3])
+    blockchain.add_block([info1, info2])
+    blockchain.add_block([info3])
 
-for vaccination_block in blockchain.chain:
-    print(vaccination_block.record_list)
+def main():
+    blockchain = VaccinationBlockchain()
+    insert_test_data(blockchain)
 
-print(blockchain.blockchhain_integrity)
+    for vaccination_block in blockchain.chain:
+        print(vaccination_block.record_list)
+
+    print(blockchain.blockchhain_integrity)
+
+
+if __name__ == '__main__':
+    main()
